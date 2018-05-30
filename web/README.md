@@ -1,27 +1,77 @@
-# Web
+#nginx配置
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
+worker_processes  1;
 
-## Development server
+#pid        logs/nginx.pid;
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+events {
+    worker_connections  1024;
+}
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+    sendfile        on;
 
-## Build
+    server {
+		index index.dhtml;
+		
+        	listen       84;
+       	 	server_name  localhost;
+		
+		#gzip on;
+		#gzip_min_length 1k;
+		#gzip_buffers 4 16k;
+		#gzip_http_version 1.0;
+		#gzip_comp_level 2;
+		#gzip_types text/plain application/javascript application/x-javascript text/css application/xml application/json text/javascript application/x-httpd-php image/png;
+		#gzip_vary off;
+		#gzip_disable "MSIE [1-6]\.";
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+        	#charset koi8-r;
 
-## Running unit tests
+        	#access_log  logs/host.access.log  main;
+		
+		#proxy_redirect ~http://127.0.0.1:[0-9]+/(.*) /$1;
+		
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+		location /portfolio {
+			proxy_pass   http://127.0.0.1:8081/portfolio;
+			proxy_set_header   Host             $host:$server_port;
+        		proxy_set_header   X-Real-IP        $remote_addr;
+        		proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;
+        		proxy_http_version 1.1;
+        		proxy_set_header Upgrade $http_upgrade;
+        		proxy_set_header Connection "upgrade";
+		}
 
-## Running end-to-end tests
+		location / {
+			proxy_pass   http://127.0.0.1:4200;
+			proxy_set_header   Host             $host:$server_port;
+        		proxy_set_header   X-Real-IP        $remote_addr;
+        		proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;
+        		proxy_http_version 1.1;
+        		proxy_set_header Upgrade $http_upgrade;
+        		proxy_set_header Connection "upgrade";
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+			#try_files $uri /manager.html = 404;
+		}
+		location /rest/ {
+			proxy_pass   http://127.0.0.1:8081;
+			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+			        		proxy_http_version 1.1;
+        		proxy_set_header Upgrade $http_upgrade;
+        		proxy_set_header Connection "upgrade";
+		}
+		location /app/ {
+			proxy_pass   http://127.0.0.1:8081;
+			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+			        		proxy_http_version 1.1;
+        		proxy_set_header Upgrade $http_upgrade;
+        		proxy_set_header Connection "upgrade";
+		}
+		
+	}
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+}
