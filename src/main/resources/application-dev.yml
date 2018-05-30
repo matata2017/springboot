@@ -1,0 +1,40 @@
+#开发环境配置 端口配置
+server:
+  port: 8081
+gril:
+  cupeSize: Ecup
+  age: 18
+spring:
+    datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      username: carexcn
+      password: carexcn
+      sql-script-encoding: UTF-8
+      url: jdbc:mysql://localhost:3306/mydb
+    jpa:
+      hibernate:
+        ddl-auto: update
+        dialect: org.hibernate.dialect.MySQL5Dialect
+      show-sql: true
+      properties:
+            hibernate.show_sql: true
+            hibernate.format_sql: true
+            hibernate.use_sql_comments: true
+    thymeleaf:
+      prefix: classpath:/templates/
+#      cache: false
+#      enabled: false
+    redis:
+      host: localhost
+      port: 6379
+shiro:
+  cacheManager:
+    expireMinutes: 30 # 30分钟
+
+    mvc:
+      view:
+        prefix: /WEB-INF/jsps/
+        suffix: .jsp
+    resources:
+      static-locations: classpath:/static/
+

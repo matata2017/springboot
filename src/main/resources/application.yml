@@ -1,0 +1,4 @@
+#dev 代表开发环境  使用JAVA -JAR 的启动方式  java-jar xxx  --spring.profiles.active=prod 来启动生产环境
+spring:
+  profiles:
+    active: dev
