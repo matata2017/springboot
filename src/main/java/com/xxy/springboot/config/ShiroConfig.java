@@ -30,7 +30,7 @@ import java.util.Map;
 /**
  * Created by xxy on 2018/4/18.
  */
-@Configuration
+//@Configuration
 public class ShiroConfig {
     private static final org.slf4j.Logger log = LoggerFactory.getLogger(ShiroConfig.class);
 
@@ -45,10 +45,10 @@ public class ShiroConfig {
         filters.put("anon", new AnonymousFilter());
         filters.put("roles", new RolesAuthorizationFilter());
         filters.put("user", new UserFilter());
-        filters.put("authc",new MyFilter());
+        filters.put("myfilter",new MyFilter());
         factory.setFilters(filters);
         factory.setLoginUrl("/rest/user/login");//设置登录的URL
-        factory.setSuccessUrl("/login/sus");//设置登录成功URL
+        factory.setSuccessUrl("/login");//设置登录成功URL
         factory.setUnauthorizedUrl("/login/403");//设置没有权限的页面
         loadShiroFilterChain(factory);
         return factory;
@@ -133,8 +133,8 @@ public class ShiroConfig {
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
         // <!--对应路径请求Filter链，代表是filter过滤引用，且是顺序执行，url且从上置下优先匹配，一旦匹配则不往下搜寻-->
         // authc：该过滤器下的页面必须验证后才能访问，它是Shiro内置的一个拦截器org.apache.shiro.web.filter.authc.FormAuthenticationFilter
-        filterChainDefinitionMap.put("/rest/user/login", "anon");//anon 可以理解为不拦截
-        filterChainDefinitionMap.put("/**", "authc");//设置所有的请求都要经过验证
+        filterChainDefinitionMap.put("/rest/user/login", "myfilter");//anon 可以理解为不拦截
+        filterChainDefinitionMap.put("/**", "myfilter");//设置所有的请求都要经过验证
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
     }
 

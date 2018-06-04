@@ -27,14 +27,19 @@ spring:
     redis:
       host: localhost
       port: 6379
+    freemarker:
+      cache: false
+      check-template-location: true
+      content-type: text/html
+      suffix: .html
+      template-loader-path: classpath:/templates/
 shiro:
   cacheManager:
     expireMinutes: 30 # 30分钟
 
-    mvc:
-      view:
-        prefix: /WEB-INF/jsps/
-        suffix: .jsp
     resources:
       static-locations: classpath:/static/
+
+
+
 
