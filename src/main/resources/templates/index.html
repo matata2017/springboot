@@ -7,8 +7,8 @@
 <body>
 <h4>spider</h4>
 <ul>
-    <#list mylist as item>
-        ${item!}
+    <#list mylist?sort?reverse as item>
+        ${item_index}:${item!}
     </#list>
 
     <#list mymap?keys as key>
