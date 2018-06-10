@@ -6,7 +6,11 @@
     <groupId>com.example</groupId>
     <artifactId>girl</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <modules>
+        <module>module/mvc</module>
+        <module>module/elasticsearch</module>
+    </modules>
+    <packaging>pom</packaging>
 
     <name>girl</name>
     <description>Demo project for Spring Boot</description>

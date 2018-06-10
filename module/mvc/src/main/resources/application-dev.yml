@@ -1,6 +1,6 @@
 #开发环境配置 端口配置
 server:
-  port: 8081
+  port: 8083
 gril:
   cupeSize: Ecup
   age: 18
