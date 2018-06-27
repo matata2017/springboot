@@ -1,0 +1,25 @@
+#开发环境配置 端口配置
+server:
+  port: 8084
+spring:
+    thymeleaf:
+      prefix: classpath:/templates/
+    resources:
+      static-locations: classpath:/static/
+    datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      username: root
+      password: kaixin
+      sql-script-encoding: UTF-8
+      url: jdbc:mysql://192.168.1.129:3306/liveeasy_erp?useUnicode=true&characterEncoding=utf-8
+
+# Elasticsearch
+elasticsearch:
+            schema: http
+            host: 47.75.151.57
+            port: 19201
+            connectTimeOut: 1000
+            socketTimeOut: 30000
+            connectionRequestTimeOut: 500
+            maxConnectNum: 100
+            maxConnectPerRoute: 100

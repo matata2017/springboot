@@ -20,12 +20,14 @@
         <version>1.5.8.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <shiro.version>1.3.2</shiro.version>
+        <zkclient.version>0.10</zkclient.version>
+        <zookeeper.version>3.4.9</zookeeper.version>
+        <elasticsearch.version>6.2.2</elasticsearch.version>
     </properties>
     <dependencies>
         <dependency>
@@ -36,6 +38,12 @@
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
             <version>1.0.6.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.0</version>
         </dependency>
         <!--WEB的依赖-->
         <!--<dependency>-->
@@ -226,13 +234,22 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
 
-        <!-- log4j -->
-        <!--<dependency>-->
-        <!--<groupId>org.springframework.boot</groupId>-->
-        <!--<artifactId>spring-boot-starter-log4j</artifactId>-->
-        <!--<version>1.3.8.RELEASE</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>org.elasticsearch</groupId>
+            <artifactId>elasticsearch</artifactId>
+            <version>${elasticsearch.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.elasticsearch.client</groupId>
+            <artifactId>elasticsearch-rest-high-level-client</artifactId>
+            <version>${elasticsearch.version}</version>
+        </dependency>
 
+        <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-core</artifactId>
+        <version>2.7</version>
+        </dependency>
     </dependencies>
     <build>
         <!--MAVEN 编译插件-->
