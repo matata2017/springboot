@@ -10,7 +10,8 @@ public interface elasticsearchService {
 
     void addBatch(List<IndexRequest> requests);
 
-    void updateDoc(String id);
+
+    void updateDoc(String id, String json);
 
     void delete(String id);
 

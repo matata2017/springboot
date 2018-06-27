@@ -69,15 +69,6 @@ public class elasticsearchServiceImpl implements elasticsearchService {
         }
     }
 
-//    public List<IndexRequest> generateRequests(){
-////        List<IndexRequest> requests = new ArrayList<>();
-////        requests.add(generateNewsRequest("sad", 1, "2018-01-27"));
-////        requests.add(generateNewsRequest("3dasd", 28, "2018-01-26"));
-////        requests.add(generateNewsRequest("sasdasd", 33, "2018-01-26"));
-////        requests.add(generateNewsRequest("sad ", 54, "2018-01-26"));
-////        return requests;
-////    }
-
     public static IndexRequest generateNewsRequest(String source){
         IndexRequest indexRequest = new IndexRequest(index, type);
         indexRequest.source(source, XContentType.JSON);
@@ -93,14 +84,9 @@ public class elasticsearchServiceImpl implements elasticsearchService {
      * @param id
      */
     @Override
-    public void updateDoc(String id){
+    public void updateDoc(String id ,String json){
         UpdateRequest updateRequest = new UpdateRequest(index, type, id);
-        People p = new People();
-        p.setName("change");
-        p.setCountry("日本");
-        p.setAge(20);
-        String source = JSON.toJSONString(p);
-        updateRequest.doc(source,XContentType.JSON);
+        updateRequest.doc(json,XContentType.JSON);
         try {
             rhlClient.update(updateRequest);
         } catch (IOException e) {
@@ -157,17 +143,19 @@ public class elasticsearchServiceImpl implements elasticsearchService {
         RangeQueryBuilder rangeQueryBuilder = QueryBuilders.rangeQuery("date");
         rangeQueryBuilder.gte("2018-01-26");
         rangeQueryBuilder.lte("2018-06-26");
-        //bool类型符合查询
+        //bool类型复合查询
         BoolQueryBuilder boolBuilder = QueryBuilders.boolQuery();
         boolBuilder.must(matchQueryBuilder);
         boolBuilder.must(termQueryBuilder);
         boolBuilder.must(rangeQueryBuilder);
+
         sourceBuilder.query(boolBuilder);
         SearchRequest searchRequest = new SearchRequest(index);
         // 排序
         FieldSortBuilder fsb = SortBuilders.fieldSort("date");
         fsb.order(SortOrder.DESC);
         sourceBuilder.sort(fsb);
+
         searchRequest.types(type);
         searchRequest.source(sourceBuilder);
         try {
