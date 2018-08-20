@@ -2,6 +2,7 @@ package springboot;
 
 import com.alibaba.fastjson.JSON;
 import com.xxy.elasticsearch.indexes.People;
+import com.xxy.elasticsearch.leetcode.Solution;
 import com.xxy.elasticsearch.service.elasticsearchService;
 import org.assertj.core.util.DateUtil;
 import org.elasticsearch.action.index.IndexRequest;
@@ -36,23 +37,17 @@ import static org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTest
 public class EsApplicationTests {
     @Autowired
     private elasticsearchService service;
+    @Autowired
+    private Solution solution;
+
     @Test
+    public  void test2(){
+        int[] numbs={1,1,2,2,44,4,44,4,5};
+        solution.removeDuplicates(numbs);
+    }
+    //@Test
     public void test(){
-     //   service.add();
-     //   service.updateDoc("jo4lQGQBJS_-AxPE_yHq");
-        People p1 = new People("sad", DateUtil.parse("2018-01-27"), 22);
-        String source1 = JSON.toJSONString(p1);
-        People p2 = new People("hahah", DateUtil.parse("2018-06-27"), 66);
-        String source2 = JSON.toJSONString(p2);
-        People p3 = new People("大事", DateUtil.parse("2018-05-27"), 22);
-        String source3 = JSON.toJSONString(p3);
-        List<IndexRequest> requests = new ArrayList<>();
-        requests.add(generateNewsRequest(source1));
-        requests.add(generateNewsRequest(source2));
-        requests.add(generateNewsRequest(source3));
-       // service.addBatch(requests);
-       // service.query();
-        service.delete("jo4lQGQBJS_-AxPE_yHq");
+
     }
 
 }
