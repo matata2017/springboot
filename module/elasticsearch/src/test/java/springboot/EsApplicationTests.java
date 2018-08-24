@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.xxy.elasticsearch.indexes.People;
 import com.xxy.elasticsearch.leetcode.Solution;
 import com.xxy.elasticsearch.service.elasticsearchService;
+import org.apache.log4j.Logger;
 import org.assertj.core.util.DateUtil;
 import org.elasticsearch.action.index.IndexRequest;
 import org.junit.Test;
@@ -18,6 +19,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.test.context.junit4.SpringRunner;
+import sun.rmi.runtime.Log;
 
 import java.nio.channels.Pipe;
 import java.util.ArrayList;
@@ -40,14 +42,24 @@ public class EsApplicationTests {
     @Autowired
     private Solution solution;
 
+    private static final Logger log = Logger.getLogger(EsApplicationTests.class);
+
     @Test
     public  void test2(){
         int[] numbs={1,1,2,2,44,4,44,4,5};
         solution.removeDuplicates(numbs);
     }
-    //@Test
+    @Test
     public void test(){
+        int[] numbs={7,1,5,3,6,4};
+        int pro=  solution.maxProfit(numbs);
+        log.info("============="+pro);
 
+    }
+    @Test
+    public void test3(){
+        int[] numbs={7,1,5,3,6,4};
+        solution.rotate1(numbs,2);
     }
 
 }
