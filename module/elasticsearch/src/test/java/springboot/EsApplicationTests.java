@@ -62,4 +62,16 @@ public class EsApplicationTests {
         solution.rotate1(numbs,2);
     }
 
+    @Test
+    public void test4(){
+        int[] numbs={7,1,5,3,6,4};
+        solution.singleNumber(numbs);
+    }
+
+    @Test
+    public void test5(){
+        int[] numbs={1,1,2,2};
+        int[] numb2={2,2};
+        solution.intersect(numbs,numb2);
+    }
 }

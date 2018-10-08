@@ -1,9 +1,13 @@
 package com.xxy.elasticsearch.leetcode;
 import com.sun.org.apache.bcel.internal.generic.SWAP;
+import org.apache.commons.collections.map.HashedMap;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author xxy
@@ -103,6 +107,7 @@ public class Solution {
      * 看看别人的思路
      * @param nums
      * @param k
+     * 1ms
      */
     public void rotate2(int[] nums, int k) {
         k = k % nums.length;
@@ -122,6 +127,87 @@ public class Solution {
             nums[j] = tem;
         }
     }
+
+
+    /**
+     * 存在重复
+     * 直接比较
+     *  性能堪忧。。。。不通过
+     * @param nums
+     * @return
+     */
+    public boolean containsDuplicate2(int[] nums) {
+        for (int i=nums.length-1;i>0;i--){
+            for ( int j=i-1;j>=0;j--){
+                if (nums[i]==nums[j]){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
+     * 存在重复
+     * 先排序，比较俩个是否相等
+     * @param nums
+     * @return
+     */
+    public boolean containsDuplicate(int[] nums) {
+        Arrays.sort(nums);
+        for (int i=0;i<nums.length-1;i++){
+            if (nums[i]==nums[i+1]){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     *给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。
+     * 思路： 采用异或
+     * 异或二进制 相同位取0 不同取1
+     * a^0=a  a^a=0
+     * 1^2^2 =1
+     * 所以把数组中所有是数采用异或得到的最后的数就是不同的数
+     * @param nums
+     * @return
+     */
+    public int singleNumber(int[] nums) {
+        int result=0;
+        for (int i=0;i<nums.length;i++){
+             result =  nums[i]^result;
+        }
+        return result;
+    }
+
+
+    /**
+     * 数组交集
+     * @param nums1
+     * @param nums2
+     * @return
+     */
+    public int[] intersect(int[] nums1, int[] nums2) {
+
+        return null;
+    }
+
+    /**
+     * 给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。
+     * @param nums
+     */
+    public void moveZeroes(int[] nums) {
+        List<Integer> index = new ArrayList();
+        for (int i=0;i<nums.length;i++){
+            if (nums[i]==0){
+
+            }
+        }
+
+    }
+
+
 
     /**
      * 根据下标删除
