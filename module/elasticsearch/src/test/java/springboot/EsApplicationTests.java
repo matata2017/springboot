@@ -2,6 +2,8 @@ package springboot;
 
 import com.alibaba.fastjson.JSON;
 import com.xxy.elasticsearch.indexes.People;
+import com.xxy.elasticsearch.leetcode.MyLinkedList;
+import com.xxy.elasticsearch.leetcode.SinglyListNode;
 import com.xxy.elasticsearch.leetcode.Solution;
 import com.xxy.elasticsearch.service.elasticsearchService;
 import org.apache.log4j.Logger;
@@ -73,5 +75,17 @@ public class EsApplicationTests {
         int[] numbs={1,1,2,2};
         int[] numb2={2,2};
         solution.intersect(numbs,numb2);
+    }
+
+    @Test
+    public void test6(){
+        MyLinkedList linkedList = new MyLinkedList();
+        linkedList.addAtHead(8);
+        linkedList.get(1);
+        linkedList.addAtTail(81);
+        linkedList.deleteAtIndex(2);
+        linkedList.addAtHead(26);
+        linkedList.deleteAtIndex(2);
+        linkedList.get(1);
     }
 }
