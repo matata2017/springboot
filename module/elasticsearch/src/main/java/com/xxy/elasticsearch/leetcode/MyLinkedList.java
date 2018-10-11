@@ -50,8 +50,9 @@ public class MyLinkedList {
         }
         int p = 0;
         SinglyListNode temp = new SinglyListNode(head.nextNode);
-        while (p++ <= index) {
+        while (p <= index) {
             temp = temp.nextNode;
+            p++;
         }
         return temp;
     }
