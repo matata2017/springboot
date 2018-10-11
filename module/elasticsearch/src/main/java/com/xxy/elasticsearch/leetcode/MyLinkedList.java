@@ -113,7 +113,6 @@ public class MyLinkedList {
      * Delete the index-th node in the linked list, if the index is valid.
      */
     public void deleteAtIndex(int index) {
-        SinglyListNode deleteNode=null;
         if (index==0){
             if (null==head.nextNode){
                 return;
