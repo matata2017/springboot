@@ -123,8 +123,8 @@ public class MyLinkedList {
         }
         if (index > 0 && index <= size - 1) {
             SinglyListNode  prev=getNodeByIndex(index-1);
-            deleteNode = getNodeByIndex(index);
-            prev.nextNode=deleteNode.nextNode;
+            //deleteNode = getNodeByIndex(index);
+            prev.nextNode=prev.nextNode.nextNode;
             size--;
         }
     }
