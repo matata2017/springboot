@@ -1,6 +1,9 @@
 package springboot;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.google.common.collect.Lists;
+import com.xxy.elasticsearch.entity.Contacts;
 import com.xxy.elasticsearch.indexes.People;
 import com.xxy.elasticsearch.leetcode.MyLinkedList;
 import com.xxy.elasticsearch.leetcode.SinglyListNode;
@@ -87,5 +90,21 @@ public class EsApplicationTests {
         linkedList.addAtHead(26);
         linkedList.deleteAtIndex(2);
         linkedList.get(1);
+    }
+    @Test
+    public  void  test7(){
+        Contacts contacts = new Contacts();
+        contacts.setName("测试");
+        List<String> tel = Lists.newArrayList();
+        tel.add("1311111111111");
+        tel.add("1592222222222");
+        contacts.setTelephones(tel);
+        String s = JSONObject.toJSONString(contacts);
+        log.info(s);
+        String json ="{\n" +
+                "\t\"name\": \"测试\",\n" +
+                "\t\"telephones\": [\"1311111111111\", \"1592222222222\"]\n" +
+                "}";
+        List<Contacts> contactsList =JSONObject.parseArray(json,Contacts.class);
     }
 }
