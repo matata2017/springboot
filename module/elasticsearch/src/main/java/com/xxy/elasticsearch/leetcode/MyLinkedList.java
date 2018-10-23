@@ -2,6 +2,7 @@ package com.xxy.elasticsearch.leetcode;
 
 /**
  * @author xxy
+ * Underscore.js
  * 單鏈表
  */
 public class MyLinkedList {
@@ -20,15 +21,6 @@ public class MyLinkedList {
     public MyLinkedList() {
         head = new SinglyListNode();
     }
-
-//    public MyLinkedList(int val) {
-//        size++;
-//        head = new SinglyListNode(val);
-//    }
-//        public void setHead(int val) {
-//        size++;
-//        head.val = val;
-//    }
 
     /**
      * Get the value of the index-th node in the linked list. If the index is invalid, return -1.

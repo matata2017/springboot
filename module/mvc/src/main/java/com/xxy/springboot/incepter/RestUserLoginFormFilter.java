@@ -19,6 +19,7 @@ public class RestUserLoginFormFilter extends FormAuthenticationFilter {
 
     }
 
+    @Override
     protected AuthenticationToken createToken(ServletRequest request, ServletResponse response) {
         try {
             Map e = (Map)this.objectMapper.readValue(request.getInputStream(), Map.class);
@@ -35,6 +36,7 @@ public class RestUserLoginFormFilter extends FormAuthenticationFilter {
         }
     }
 
+    @Override
     protected boolean onLoginFailure(AuthenticationToken token, AuthenticationException e, ServletRequest request, ServletResponse response) {
         RestMessage rm = new RestMessage("990101", "登录失败");
         HttpServletResponse res = (HttpServletResponse)response;

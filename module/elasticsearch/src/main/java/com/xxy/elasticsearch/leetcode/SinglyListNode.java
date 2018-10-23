@@ -13,10 +13,13 @@ package com.xxy.elasticsearch.leetcode;
  * 1.找到当前结点的next结点
  * 2.从头遍历找到当前结点的prev结点
  * 3将prev结点连接到next结点
+ *
+ * 双链表
  */
 public class SinglyListNode {
     int val;
     SinglyListNode nextNode;
+    SinglyListNode prevNode;
     SinglyListNode (int x){
         this.val=x;
     }
@@ -27,6 +30,12 @@ public class SinglyListNode {
     SinglyListNode (int x,SinglyListNode nextNode){
         this.val=x;
         this.nextNode=nextNode;
+    }
+
+    SinglyListNode (int x,SinglyListNode nextNode,SinglyListNode prevNode){
+        this.val=x;
+        this.nextNode=nextNode;
+        this.prevNode=prevNode;
     }
     /** Initialize your data structure here. */
     public SinglyListNode() {

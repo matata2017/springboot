@@ -18,11 +18,11 @@ public class IdCardInfoImpl  {
 	 *
      */
 	//@Value("${idcardurl}")
-	private  final String IDCARD_URL="http://182.254.148.132/yunshi/v1/idcardreturnstring";
+	private  final String IDCARD_URL="http://182.254.148.132/123/v1/idcardreturnstring";
 	//@Value("${businessurl}")
-	private  final String BUSINESS_URL="http://182.254.148.132/dev/yunshi/v1/businesslicensereturnstring";
+	private  final String BUSINESS_URL="http://182.254.148.132/dev/123/v1/businesslicensereturnstring";
 	//@Value("${idcardcheckurl}")
-	private  final String IDCARDCHECK_URL="http://182.254.148.132/dev/yunshi/v1/idcardreturnphoto";
+	private  final String IDCARDCHECK_URL="http://182.254.148.132/dev/123/v1/idcardreturnphoto";
 
 	/**
 	 * 身份证识别接口

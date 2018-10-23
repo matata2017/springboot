@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
+ * @author XXY
  * Created by xxy on 2018/4/19.
  */
 public class MyRealm extends AuthorizingRealm{
