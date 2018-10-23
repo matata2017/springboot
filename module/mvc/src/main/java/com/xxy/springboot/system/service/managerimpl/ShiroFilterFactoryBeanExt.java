@@ -1,4 +1,4 @@
-package com.xxy.springboot.system.service.ManagerImpl;
+package com.xxy.springboot.system.service.managerimpl;
 
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
@@ -24,6 +24,7 @@ public class ShiroFilterFactoryBeanExt extends ShiroFilterFactoryBean implements
     public ShiroFilterFactoryBeanExt() {
     }
 
+    @Override
     protected AbstractShiroFilter createInstance() throws Exception {
         log.debug("Creating Shiro Filter instance.");
         SecurityManager securityManager = this.getSecurityManager();
@@ -35,8 +36,9 @@ public class ShiroFilterFactoryBeanExt extends ShiroFilterFactoryBean implements
             manager1 = "The security manager does not implement the WebSecurityManager interface.";
             throw new BeanInitializationException(manager1);
         } else {
-            FilterChainManager manager = createFilterChainManager();//
-            PathMatchingFilterChainResolver chainResolver = new PathMatchingFilterChainResolver();//最重要的作用是：当请求url来的时候，他担任匹配工作（调用该类的getChain方法做匹配
+            FilterChainManager manager = createFilterChainManager();
+            //最重要的作用是：当请求url来的时候，他担任匹配工作（调用该类的getChain方法做匹配
+            PathMatchingFilterChainResolver chainResolver = new PathMatchingFilterChainResolver();
             chainResolver.setFilterChainManager(manager);
             return new SpringShiroFilter((WebSecurityManager) securityManager, chainResolver);
 
@@ -57,7 +59,7 @@ public class ShiroFilterFactoryBeanExt extends ShiroFilterFactoryBean implements
     public void destroy() {
 
     }
-
+    @Override
     protected FilterChainManager createFilterChainManager() {
         return null;
     }

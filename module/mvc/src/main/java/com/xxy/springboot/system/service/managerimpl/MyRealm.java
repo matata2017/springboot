@@ -1,7 +1,6 @@
-package com.xxy.springboot.system.service.ManagerImpl;
+package com.xxy.springboot.system.service.managerimpl;
 
 import com.xxy.springboot.dao.UserDao;
-import com.xxy.springboot.rest.UserLogInRest;
 import com.xxy.springboot.system.entity.User;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;

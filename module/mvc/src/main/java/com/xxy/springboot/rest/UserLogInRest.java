@@ -43,6 +43,7 @@ public class UserLogInRest {
         }catch(UnknownAccountException uae){
             logger.info("对用户[" + username + "]进行登录验证..验证未通过,未知账户");
             token.clear();
+            currentUser.logout();
         }
         if(UserUtils.isLogin()){
             return UserUtils.getCurrentUser();

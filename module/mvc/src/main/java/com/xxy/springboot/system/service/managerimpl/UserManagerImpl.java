@@ -1,4 +1,4 @@
-package com.xxy.springboot.system.service.ManagerImpl;
+package com.xxy.springboot.system.service.managerimpl;
 
 import com.xxy.springboot.dao.UserDao;
 import com.xxy.springboot.system.entity.User;
@@ -17,7 +17,7 @@ public class UserManagerImpl implements UserManager {
     public User findById(String id) {
         return userDao.findOne(id);
     }
-
+    @Override
     public User findByName(String name) {
         return userDao.findByUserName(name);
     }

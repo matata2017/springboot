@@ -3,6 +3,7 @@ package com.xxy.springboot.system.service;
 import com.xxy.springboot.system.entity.User;
 
 /**
+ * @author xxy
  * Created by Shinelon on 2018/4/19.
  */
 public interface UserManager {

@@ -2,8 +2,7 @@ package com.xxy.springboot.config;
 
 import com.google.common.collect.Maps;
 import com.xxy.springboot.incepter.MyFilter;
-import com.xxy.springboot.system.service.ManagerImpl.MyRealm;
-import org.apache.shiro.cache.CacheManager;
+import com.xxy.springboot.system.service.managerimpl.MyRealm;
 import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
@@ -14,13 +13,9 @@ import org.apache.shiro.web.filter.authz.PermissionsAuthorizationFilter;
 import org.apache.shiro.web.filter.authz.RolesAuthorizationFilter;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.web.filter.DelegatingFilterProxy;
-import org.apache.shiro.cache.AbstractCacheManager;
 
 import javax.servlet.DispatcherType;
 import java.util.HashMap;
