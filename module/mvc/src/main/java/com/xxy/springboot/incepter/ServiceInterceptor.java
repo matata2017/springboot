@@ -16,7 +16,7 @@ import java.util.Map;
  * @version V1.0
  * @Description: 统计各个方法的执行时间
  */
-@Aspect
+//@Aspect
 @Component
 public class ServiceInterceptor {
     private static final Logger logger = LoggerFactory.getLogger(ServiceInterceptor.class);
@@ -24,7 +24,7 @@ public class ServiceInterceptor {
     ThreadLocal<Map<String, Long>> methodInvokedCount = new ThreadLocal<>();
     ThreadLocal<Map<String, Long>> methodExecuteTime = new ThreadLocal<>();
 
-    @Pointcut("execution( * com.xxy.springboot.controller.*.*(..))")
+    @Pointcut("execution( * com.xxy.springboot.rest.*.*(..))")
     public void aopPointCut(){}
 
     /**

@@ -15,6 +15,7 @@ import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.filter.DelegatingFilterProxy;
 
 import javax.servlet.DispatcherType;
@@ -25,7 +26,7 @@ import java.util.Map;
 /**
  * Created by xxy on 2018/4/18.
  */
-//@Configuration
+@Configuration
 public class ShiroConfig {
     private static final org.slf4j.Logger log = LoggerFactory.getLogger(ShiroConfig.class);
 
@@ -78,6 +79,7 @@ public class ShiroConfig {
         registrationBean.setFilter(proxy);
         registrationBean.setEnabled(true);
         registrationBean.setName("myFilters");
+        registrationBean.setOrder(2);
         /*
          REQUEST：当用户直接访问页面时，Web容器将会调用过滤器。如果目标资源是通过RequestDispatcher的include()或forward()方法访问时，那么该过滤器就不会被调用。
         INCLUDE：如果目标资源是通过RequestDispatcher的include()方法访问时，那么该过滤器将被调用。除此之外，该过滤器不会被调用。

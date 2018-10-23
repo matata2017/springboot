@@ -20,13 +20,14 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/rest/user")
 public class UserLogInRest {
     private static final org.slf4j.Logger logger = LoggerFactory.getLogger(UserLogInRest.class);
+
     @GetMapping("/pager")
-    public Page<User> getAllUser(){
+    public Page<User> getAllUser() {
         return null;
     }
 
     @PostMapping("/login")
-    public User userLogin(@RequestBody User user){
+    public User userLogin(@RequestBody User user) {
         String username = user.getUserName();
         UsernamePasswordToken token = new UsernamePasswordToken(user.getUserName(), user.getPassWord());
         //获取当前的Subject
@@ -40,14 +41,14 @@ public class UserLogInRest {
             logger.info("对用户[" + username + "]进行登录验证..验证开始");
             currentUser.login(token);
             logger.info("对用户[" + username + "]进行登录验证..验证通过");
-        }catch(UnknownAccountException uae){
+        } catch (UnknownAccountException uae) {
             logger.info("对用户[" + username + "]进行登录验证..验证未通过,未知账户");
             token.clear();
             currentUser.logout();
         }
-        if(UserUtils.isLogin()){
+        if (UserUtils.isLogin()) {
             return UserUtils.getCurrentUser();
-        }else{
+        } else {
             token.clear();
         }
         return null;
