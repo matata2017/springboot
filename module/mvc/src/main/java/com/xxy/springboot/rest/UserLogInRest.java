@@ -54,6 +54,10 @@ public class UserLogInRest {
             logger.info("对用户[" + username + "]进行登录验证..验证未通过,未知账户");
             token.clear();
             currentUser.logout();
+            r.setMessage("登陆失败");
+            r.setCode(HouseSubscribeStatus.NO_SUBSCRIBE.getValue());
+            r.setData(UserUtils.getCurrentUser());
+            return r;
         }
         r.setMessage("登陆成功");
         r.setCode(HouseSubscribeStatus.FINISH.getValue());
