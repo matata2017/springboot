@@ -16,6 +16,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.web.filter.DelegatingFilterProxy;
 
 import javax.servlet.DispatcherType;
@@ -98,6 +99,7 @@ public class ShiroConfig {
         return "/*";
     }//shiroFilter 拦截所有请求
     @Bean("MyRealm")
+    @DependsOn({"lifecycleBeanPostProcessor","ehCacheManager"})
     public MyRealm getRealm(){
         MyRealm realm = new MyRealm();
         return realm;
@@ -136,7 +138,7 @@ public class ShiroConfig {
     }
 
 
-    @Bean
+    @Bean("ehCacheManager")
     public EhCacheManager getEhCacheManager() {
         EhCacheManager ehCacheManager = new EhCacheManager();
         ehCacheManager.setCacheManagerConfigFile("classpath:ehcache-shiro.xml");

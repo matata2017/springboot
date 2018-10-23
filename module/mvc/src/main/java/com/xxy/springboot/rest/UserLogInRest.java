@@ -35,6 +35,12 @@ public class UserLogInRest {
         //获取当前的Subject
         Subject currentUser = SecurityUtils.getSubject();
         RestMessage<User> r = new RestMessage();
+        if (UserUtils.isLogin()) {
+            r.setCode(HouseSubscribeStatus.FINISH.getValue());
+            r.setMessage("已经登陆");
+            r.setData(UserUtils.getCurrentUser());
+            return r;
+        }
         try {
             //在调用了login方法后,SecurityManager会收到AuthenticationToken,
             // 并将其发送给已配置的Realm执行必须的认证检查
@@ -46,15 +52,6 @@ public class UserLogInRest {
             logger.info("对用户[" + username + "]进行登录验证..验证通过");
         } catch (UnknownAccountException uae) {
             logger.info("对用户[" + username + "]进行登录验证..验证未通过,未知账户");
-            token.clear();
-            currentUser.logout();
-        }
-        if (UserUtils.isLogin()) {
-            r.setCode(HouseSubscribeStatus.FINISH.getValue());
-            r.setMessage("已经登陆");
-            r.setData(UserUtils.getCurrentUser());
-            return r;
-        } else {
             token.clear();
             currentUser.logout();
         }
