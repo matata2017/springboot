@@ -132,7 +132,7 @@ public class Solution {
     /**
      * 存在重复
      * 直接比较
-     *  性能堪忧。。。。不通过
+     *  性能堪忧。。。。
      * @param nums
      * @return
      */

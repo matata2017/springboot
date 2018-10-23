@@ -38,7 +38,7 @@ public class RestUserLoginFormFilter extends FormAuthenticationFilter {
 
     @Override
     protected boolean onLoginFailure(AuthenticationToken token, AuthenticationException e, ServletRequest request, ServletResponse response) {
-        RestMessage rm = new RestMessage("990101", "登录失败");
+        RestMessage rm = new RestMessage(990101, "登录失败");
         HttpServletResponse res = (HttpServletResponse)response;
         res.setStatus(401);
         try {

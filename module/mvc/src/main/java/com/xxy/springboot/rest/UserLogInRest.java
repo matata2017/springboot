@@ -1,7 +1,9 @@
 package com.xxy.springboot.rest;
 
+import com.xxy.springboot.Utils.HouseSubscribeStatus;
 import com.xxy.springboot.Utils.UserUtils;
 import com.xxy.springboot.config.ShiroConfig;
+import com.xxy.springboot.message.RestMessage;
 import com.xxy.springboot.system.entity.User;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
@@ -27,11 +29,12 @@ public class UserLogInRest {
     }
 
     @PostMapping("/login")
-    public User userLogin(@RequestBody User user) {
+    public RestMessage<User> userLogin(@RequestBody User user) {
         String username = user.getUserName();
         UsernamePasswordToken token = new UsernamePasswordToken(user.getUserName(), user.getPassWord());
         //获取当前的Subject
         Subject currentUser = SecurityUtils.getSubject();
+        RestMessage<User> r = new RestMessage();
         try {
             //在调用了login方法后,SecurityManager会收到AuthenticationToken,
             // 并将其发送给已配置的Realm执行必须的认证检查
@@ -47,11 +50,18 @@ public class UserLogInRest {
             currentUser.logout();
         }
         if (UserUtils.isLogin()) {
-            return UserUtils.getCurrentUser();
+            r.setCode(HouseSubscribeStatus.FINISH.getValue());
+            r.setMessage("已经登陆");
+            r.setData(UserUtils.getCurrentUser());
+            return r;
         } else {
             token.clear();
+            currentUser.logout();
         }
-        return null;
+        r.setMessage("登陆成功");
+        r.setCode(HouseSubscribeStatus.FINISH.getValue());
+        r.setData(UserUtils.getCurrentUser());
+        return r;
     }
 
 }

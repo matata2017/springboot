@@ -1,4 +1,4 @@
-package com.xxy.elasticsearch.utils;
+package com.xxy.springboot.Utils;
 
 
 /**
