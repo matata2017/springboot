@@ -8,6 +8,7 @@ import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.filter.authc.AnonymousFilter;
+import org.apache.shiro.web.filter.authc.LogoutFilter;
 import org.apache.shiro.web.filter.authc.UserFilter;
 import org.apache.shiro.web.filter.authz.PermissionsAuthorizationFilter;
 import org.apache.shiro.web.filter.authz.RolesAuthorizationFilter;
@@ -32,7 +33,7 @@ public class ShiroConfig {
     private static final org.slf4j.Logger log = LoggerFactory.getLogger(ShiroConfig.class);
 
 
-    @Bean("shiroFilter")
+    @Bean({"shiroFilter"})
     public ShiroFilterFactoryBean getShiroFactory(SecurityManager s){
 //        ShiroFilterFactoryBeanExt factory = new ShiroFilterFactoryBeanExt();
         ShiroFilterFactoryBean factory = new ShiroFilterFactoryBean();
@@ -41,6 +42,7 @@ public class ShiroConfig {
         filters.put("perm",new PermissionsAuthorizationFilter());
         filters.put("anon", new AnonymousFilter());
         filters.put("roles", new RolesAuthorizationFilter());
+        filters.put("logout", new LogoutFilter());
         filters.put("user", new UserFilter());
         filters.put("myfilter",new MyFilter());
         factory.setFilters(filters);
@@ -79,8 +81,6 @@ public class ShiroConfig {
         FilterRegistrationBean registrationBean = new FilterRegistrationBean();
         registrationBean.setFilter(proxy);
         registrationBean.setEnabled(true);
-        registrationBean.setName("myFilters");
-        registrationBean.setOrder(2);
         /*
          REQUEST：当用户直接访问页面时，Web容器将会调用过滤器。如果目标资源是通过RequestDispatcher的include()或forward()方法访问时，那么该过滤器就不会被调用。
         INCLUDE：如果目标资源是通过RequestDispatcher的include()方法访问时，那么该过滤器将被调用。除此之外，该过滤器不会被调用。
