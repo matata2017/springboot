@@ -9,7 +9,7 @@
     <modules>
         <module>module/mvc</module>
         <module>module/elasticsearch</module>
-        <module>dubboapi</module>
+        <module>module/dubboapi</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -42,6 +42,11 @@
             <version>1.0.6.RELEASE</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>api</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
         <!--<dependency>-->
             <!--<groupId>com.google.code.gson</groupId>-->
             <!--<artifactId>gson</artifactId>-->
