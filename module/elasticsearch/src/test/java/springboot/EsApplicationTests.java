@@ -25,6 +25,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.test.context.junit4.SpringRunner;
 import sun.rmi.runtime.Log;
+import xxy.dubbo.api.service.DubboSpiderManager;
 
 import java.nio.channels.Pipe;
 import java.util.ArrayList;
@@ -106,5 +107,12 @@ public class EsApplicationTests {
                 "\t\"telephones\": [\"1311111111111\", \"1592222222222\"]\n" +
                 "}";
         List<Contacts> contactsList =JSONObject.parseArray(json,Contacts.class);
+    }
+
+    @Autowired
+    DubboSpiderManager dubboSpiderManager;
+    @Test
+    public void test22(){
+        dubboSpiderManager.spider();
     }
 }

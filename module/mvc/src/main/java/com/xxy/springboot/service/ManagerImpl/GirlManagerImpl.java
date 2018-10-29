@@ -30,6 +30,7 @@ public class GirlManagerImpl implements GirlManager {
      */
     @Override
     public void spiderMan() {
+        System.out.print("============================dubbo  success================");
         Spider.create(spiderMan).addUrl("http://my.oschina.net/flashsword/blog")
                 .addPipeline(new ConsolePipeline()).run();
     }

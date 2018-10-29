@@ -14,6 +14,7 @@ import org.apache.shiro.web.filter.authz.PermissionsAuthorizationFilter;
 import org.apache.shiro.web.filter.authz.RolesAuthorizationFilter;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -32,10 +33,13 @@ import java.util.Map;
 public class ShiroConfig {
     private static final org.slf4j.Logger log = LoggerFactory.getLogger(ShiroConfig.class);
 
+    @Value("${dubbo.registry}")
+    private String zookeeperHost;
 
     @Bean({"shiroFilter"})
     public ShiroFilterFactoryBean getShiroFactory(SecurityManager s){
 //        ShiroFilterFactoryBeanExt factory = new ShiroFilterFactoryBeanExt();
+        log.info("==========================="+zookeeperHost);
         ShiroFilterFactoryBean factory = new ShiroFilterFactoryBean();
         factory.setSecurityManager(s);
         HashMap filters = Maps.newHashMap();
