@@ -5,15 +5,15 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-    <dubbo:application name="compute-service"  />
+    <dubbo:application name="provider"  />
 
     <dubbo:monitor protocol="registry"></dubbo:monitor>
 
     <!-- 注册中心服务地址 -->
     <dubbo:registry id="zookeeper" protocol="zookeeper" address="localhost:2181" />
 
-    <!-- 用dubbo协议在30001 -->
-    <dubbo:protocol name="dubbo" port="8088" threadpool="cached"
+    <!-- 用dubbo协议在8090 -->
+    <dubbo:protocol name="dubbo" port="8090" threadpool="cached"
                     threads="600" />
 
     <!-- 声明需要暴露的服务接口 -->
