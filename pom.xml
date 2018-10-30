@@ -42,10 +42,18 @@
             <version>1.0.6.RELEASE</version>
         </dependency>
 
+        <!--<dependency>-->
+            <!--<groupId>com.example</groupId>-->
+            <!--<artifactId>api</artifactId>-->
+            <!--<version>0.0.1-SNAPSHOT</version>-->
+        <!--</dependency>-->
+
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
-            <groupId>com.example</groupId>
-            <artifactId>api</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.14</version>
+            <scope>provided</scope>
         </dependency>
         <!--<dependency>-->
             <!--<groupId>com.google.code.gson</groupId>-->
@@ -307,7 +315,10 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>1.4.3.RELEASE</version>
+                <!--<version>1.4.3.RELEASE</version>-->
+                <!--<configuration>-->
+                    <!--<mainClass>com.xxy.springboot.GirlApplication</mainClass>-->
+                <!--</configuration>-->
                 <executions>
                     <execution>
                         <goals>
