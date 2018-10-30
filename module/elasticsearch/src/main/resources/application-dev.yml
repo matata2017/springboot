@@ -8,10 +8,16 @@ spring:
       static-locations: classpath:/static/
     datasource:
       driver-class-name: com.mysql.jdbc.Driver
-      username: root
-      password: kaixin
+      username: carexcn
+      password: carexcn
       sql-script-encoding: UTF-8
-      url: jdbc:mysql://192.168.1.129:3306/liveeasy_erp?useUnicode=true&characterEncoding=utf-8
+      url: jdbc:mysql://localhost:3306/mydb
+#    datasource:
+#      driver-class-name: com.mysql.jdbc.Driver
+#      username: root
+#      password: kaixin
+#      sql-script-encoding: UTF-8
+#      url: jdbc:mysql://192.168.1.129:3306/liveeasy_erp?useUnicode=true&characterEncoding=utf-8
 
 # Elasticsearch
 elasticsearch:
@@ -23,3 +29,7 @@ elasticsearch:
             connectionRequestTimeOut: 500
             maxConnectNum: 100
             maxConnectPerRoute: 100
+#zookeeper地址
+dubbo:
+  registry:
+    address: localhost:2181
