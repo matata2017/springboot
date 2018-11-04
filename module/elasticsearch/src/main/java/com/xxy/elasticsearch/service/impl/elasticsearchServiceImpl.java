@@ -137,7 +137,7 @@ public class elasticsearchServiceImpl implements elasticsearchService {
         MatchQueryBuilder matchQueryBuilder = QueryBuilders.matchQuery("name", "xxy");
 
         MatchPhraseQueryBuilder matchPhraseQueryBuilder =QueryBuilders.matchPhraseQuery("name","xxy");
-
+        //精确查询
         TermQueryBuilder termQueryBuilder = QueryBuilders.termQuery("country", "中国");
         //范围查询
         RangeQueryBuilder rangeQueryBuilder = QueryBuilders.rangeQuery("date");

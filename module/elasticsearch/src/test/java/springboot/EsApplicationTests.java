@@ -115,4 +115,16 @@ public class EsApplicationTests {
     public void test22(){
         dubboSpiderManager.spider();
     }
+
+
+    @Test
+    public void test55(){
+        List<Object> list = new ArrayList<Object>();
+
+        for (int i = 0; i < 100000000; i++) {
+
+            list.add(new byte[1024*1024]);
+
+        }
+    }
 }
