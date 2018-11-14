@@ -170,6 +170,8 @@ public class Solution {
      * a^0=a  a^a=0
      * 1^2^2 =1
      * 所以把数组中所有是数采用异或得到的最后的数就是不同的数
+     *
+     * A、B两个值相同则异或为0 不同则异或为1
      * @param nums
      * @return
      */
