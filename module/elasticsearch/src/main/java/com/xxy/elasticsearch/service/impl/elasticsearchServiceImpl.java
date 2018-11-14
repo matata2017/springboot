@@ -8,7 +8,9 @@ import com.google.gson.GsonBuilder;
 import com.xxy.elasticsearch.indexes.People;
 import com.xxy.elasticsearch.service.elasticsearchService;
 import org.assertj.core.util.DateUtil;
+import org.elasticsearch.action.bulk.BulkProcessor;
 import org.elasticsearch.action.bulk.BulkRequest;
+import org.elasticsearch.action.bulk.BulkResponse;
 import org.elasticsearch.action.delete.DeleteRequest;
 import org.elasticsearch.action.delete.DeleteResponse;
 import org.elasticsearch.action.index.IndexRequest;
@@ -173,5 +175,26 @@ public class elasticsearchServiceImpl implements elasticsearchService {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    protected BulkProcessor getBulkInstance() {
+        BulkProcessor.Listener listener = new BulkProcessor.Listener() {
+            @Override
+            public void beforeBulk(long l, BulkRequest bulkRequest) {
+
+            }
+
+            @Override
+            public void afterBulk(long l, BulkRequest bulkRequest, BulkResponse bulkResponse) {
+
+            }
+
+            @Override
+            public void afterBulk(long l, BulkRequest bulkRequest, Throwable throwable) {
+
+            }
+        };
+        BulkProcessor.Builder builder = BulkProcessor.builder(rhlClient::bulkAsync, listener);
+        BulkProcessor bulkProcessor = builder.build();
+        return bulkProcessor;
     }
 }
