@@ -1,11 +1,14 @@
 package com.xxy.elasticsearch.entity;
 
+import lombok.Data;
+
 import java.util.List;
 
 /**
  * @author xxy
  * 业主对象
  */
+@Data
 public class Contacts {
     /**
      * 业主名称

@@ -120,11 +120,10 @@ public class EsApplicationTests {
     @Test
     public void test55(){
         List<Object> list = new ArrayList<Object>();
+        int i =1;
+        Thread a =  new Thread();
 
-        for (int i = 0; i < 100000000; i++) {
 
-            list.add(new byte[1024*1024]);
-
-        }
     }
+
 }
