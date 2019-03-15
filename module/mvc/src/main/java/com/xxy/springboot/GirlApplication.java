@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableJpaRepositories(basePackages = {"com.xxy.**"})
 @EnableCaching
 @EnableTransactionManagement
-@ImportResource({"classpath:dubbo-provider.xml"})
+//@ImportResource({"classpath:dubbo-provider.xml"})
 public class GirlApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(GirlApplication.class, args);

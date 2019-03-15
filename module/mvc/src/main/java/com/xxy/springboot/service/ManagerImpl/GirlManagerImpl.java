@@ -11,6 +11,7 @@ import us.codecraft.webmagic.pipeline.ConsolePipeline;
 
 /**
  * Created by Shinelon on 2017/11/28.
+ * <apiNote></apiNote>
  */
 @Service
 public class GirlManagerImpl implements GirlManager {

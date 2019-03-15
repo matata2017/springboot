@@ -10,14 +10,11 @@ import org.springframework.context.annotation.Configuration;
 /**
  * Created by Shinelon on 2018/11/26.
  */
-@Configuration
 public class smsConfig {
-    @Bean
     public WHZCChannel getWuchanel(){
         return new WHZCChannel();
     }
 
-    @Bean
     public HNChannel gethnChanel(){
         return new HNChannel();
     }

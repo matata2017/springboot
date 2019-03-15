@@ -7,8 +7,8 @@ gril:
 spring:
     datasource:
       driver-class-name: com.mysql.jdbc.Driver
-      username: carexcn
-      password: carexcn
+      username: root
+      password: 123456
       sql-script-encoding: UTF-8
       url: jdbc:mysql://localhost:3306/mydb
     jpa:
